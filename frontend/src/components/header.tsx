@@ -1,23 +1,19 @@
 "use client"
 import { styled } from "styled-components";
+import { Logo } from "./logo";
 
 const HeaderStyle = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 3rem;
+  padding: 2rem;
 `;
-
-const LogoImg = styled.img`
-  max-width: 100%;
-  max-height: 100%;
-`
 
 export function Header(){
   return(
     <HeaderStyle>
-      <LogoImg src="/logo.png"/>
+      <Logo/>
     </HeaderStyle>
   )
 };

@@ -1,9 +1,10 @@
 import { Header } from '@/components/header'
 import './globals.css'
 import { Plus_Jakarta_Sans } from 'next/font/google'
+import { Footer } from '@/components/footer'
 
 const jakarta = Plus_Jakarta_Sans({
-  weight: ['300', '400', '500', '600'],
+  weight: ['300', '400', '500', '600', '800'],
   subsets: ['latin'] ,
 })
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className={jakarta.className}>
         <Header/>
         {children}
+        <Footer/>
       </body>
     </html>
   )
