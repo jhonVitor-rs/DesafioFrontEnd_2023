@@ -1,4 +1,3 @@
-"use client"
 import { styled } from "styled-components";
 
 const Container = styled.div`
@@ -59,7 +58,7 @@ const Text = styled.h4`
   color: var(--color-font-bold)
 `
 
-export function MainHeader(){
+export function MainAboutUs(){
   return(
     <Container>
       <HeaderTitle>webinars exclusivos</HeaderTitle>

@@ -1,5 +1,6 @@
 "use client"
-import { MainHeader } from "@/components/main/mainHeader"
+import { MainAboutUs } from "@/components/main/mainAboutUs"
+import { MainInvite } from "@/components/main/mainInvite"
 import { styled } from "styled-components"
 
 const Main = styled.div`
@@ -11,7 +12,8 @@ const Main = styled.div`
 export default function Home() {
   return (
     <Main>
-      <MainHeader/>
+      <MainAboutUs/>
+      <MainInvite/>
     </Main>
   )
 }
