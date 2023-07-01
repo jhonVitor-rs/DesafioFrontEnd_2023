@@ -8,6 +8,7 @@ const Container = styled.div`
   justify-content: space-around;
   gap: 5rem;
   flex-wrap: wrap;
+  padding-bottom: 1rem;
 `
 
 export function FooterSignature(){

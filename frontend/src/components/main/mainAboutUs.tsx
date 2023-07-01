@@ -1,3 +1,4 @@
+"use client"
 import { styled } from "styled-components";
 
 const Container = styled.div`
@@ -55,7 +56,7 @@ const Separator = styled.hr`
 const Text = styled.h4`
   font-weight: 600;
   font-size: 1.3rem;
-  color: var(--color-font-bold)
+  color: var(--color-font-bold);
 `
 
 export function MainAboutUs(){
