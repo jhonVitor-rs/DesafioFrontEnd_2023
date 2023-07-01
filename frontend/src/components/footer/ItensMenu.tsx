@@ -1,4 +1,3 @@
-"use client"
 import React from 'react';
 import { styled } from 'styled-components';
 
@@ -33,7 +32,7 @@ const TitleItem = styled.a`
   transition: all .2s;
 
   &:hover {
-    color: var(--color-font-selected)
+    color: var(--color-font-selected);
   }
 `
 

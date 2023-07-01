@@ -9,7 +9,7 @@ const FooterStyle = styled.footer`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 3rem;
   padding: 3rem auto;
 `
 

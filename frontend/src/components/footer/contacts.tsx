@@ -1,4 +1,3 @@
-"use client"
 import { styled } from "styled-components"
 import { FaFacebookF, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 

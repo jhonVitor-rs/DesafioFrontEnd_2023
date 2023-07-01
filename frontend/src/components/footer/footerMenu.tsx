@@ -1,4 +1,3 @@
-"use client"
 import { styled } from "styled-components"
 import LinkList from "./ItensMenu"
 import { Contacts } from "./contacts"

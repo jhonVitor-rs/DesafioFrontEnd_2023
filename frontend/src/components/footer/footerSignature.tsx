@@ -1,4 +1,3 @@
-"use client"
 import { styled } from "styled-components"
 import { Signature } from "./signature"
 import { Address } from "./address"
