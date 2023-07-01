@@ -1,9 +1,10 @@
+"use client"
 import { styled } from "styled-components"
 
 const LogoImg = styled.img`
   max-width: 100%;
   max-height: 100%;
-  width:15rem;
+  width: 13rem;
   height: auto;
 `
 

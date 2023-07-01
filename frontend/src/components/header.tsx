@@ -4,7 +4,7 @@ import { Logo } from "./logo";
 
 const HeaderStyle = styled.header`
   display: flex;
-  align-items: center;
+  text-align: center;
   justify-content: center;
   width: 100%;
   padding: 2rem;

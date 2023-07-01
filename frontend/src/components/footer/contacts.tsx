@@ -28,7 +28,7 @@ const AnchorButton = styled.a`
   justify-content: center;
   width: 3rem;
   height: 3rem;
-  background-color: var(--color-font-light);
+  background-color: var(color-background-secondary);
   color: var(--color-font-medium);
   border-radius: 50%;
   transition: all .3s;

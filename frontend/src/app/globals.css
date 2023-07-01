@@ -2,9 +2,11 @@
   --max-width: 1100px;
   --color-font-light: #a4bcd2;
   --color-font-medium: #7491ba;
-  --color-font-bold: #4b5e7f;
-  --color-font-selected: #0069e9;
+  --color-font-bold: #1c3c50;
+  --color-font-selected: #1f76f0;
   --color-font-cyan: #10d1b7;
+
+  --color-background-secondary: #f0f8ff;
 }
 
 * {
