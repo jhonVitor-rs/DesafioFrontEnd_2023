@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import { FilterListType } from "./filyterType";
 import { OrderList } from "./orderList";
+import { MediaList } from "./mediaList";
 
 const Container = styled.div`
   display: flex;
@@ -23,6 +24,7 @@ export function MainList(){
       <FilterBar>
         <FilterListType/>
         <OrderList/>
+        <MediaList/>
       </FilterBar>
     </Container>
   )

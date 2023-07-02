@@ -7,11 +7,11 @@ interface Media {
   category: string
 }
 
-export interface DataRespose{
-  
+export interface DataResponse{
+  allMedia: Media[]
 }
 
-export const GetAllMedia = async () => {
+export const GetAllMedia = async ():Promise<DataResponse | []> => {
   try{
     const {data} = await GqlClient.query({
       query: gql`
@@ -25,8 +25,9 @@ export const GetAllMedia = async () => {
       `
     })
 
-    console.log(data)
+    return data
   } catch(error){
     console.log(error)
+    return []
   }
 }
