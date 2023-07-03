@@ -50,6 +50,7 @@ const ListOptions = styled.ul`
   border-radius: 0 0 1rem 1rem;
   background-color: var(--color-background-secondary);
   transition: all .3s;
+  z-index: 1000;
 
   li {
     cursor: pointer;

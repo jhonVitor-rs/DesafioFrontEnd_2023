@@ -2,10 +2,12 @@
 import { styled } from "styled-components";
 import React, { useEffect, useState } from "react";
 import { gql, useQuery } from "@apollo/client";
-import { useFilter } from "@/Context/filterContext";
+import { FilterType, ListOrder, useFilter } from "@/Context/filterContext";
 import { DataResponse, GetAllMedia } from "@/hooks/getAllMedia";
 import { AllMedia } from "@/types/media";
 import { Card } from "./card";
+import { ApplyFilter, ApplyOrder } from "@/hooks/applyFilterOrder";
+import client from "@/hooks/apollo-client";
 
 const Container = styled.div`
   display: flex;
@@ -17,18 +19,39 @@ const Container = styled.div`
   align-items: center;
 `
 
-const AllMediaQuery = gql`
-  query{
-    allProducts{
-      id
-      title
-      category
-    }
-  }`
+const AllMediaQuery = ({filter, order}: {filter: FilterType, order: ListOrder}) => {
+  if(filter === FilterType.All && order === ListOrder.Default){
+    return gql`
+      query{
+        allProducts{
+          id
+          title
+          category
+        }
+      }`
+  } else {
+    const getFilter = ApplyFilter(filter)
+    const getOrder = ApplyOrder(order)
+    return gql`
+      query{
+        allProducts(${getFilter},${getOrder}){
+          id
+          title
+          category
+        }
+      }`
+  }
+}
 
 export function MediaList(){
   const {state} = useFilter()
-  const {data, loading, error} = useQuery<AllMedia>(AllMediaQuery)
+  const query = AllMediaQuery({ filter: state.filterType, order: state.listOrder });
+  const queryKey = ["AllMedia", { filter: state.filterType, order: state.listOrder }];
+  const { data, loading, error } = useQuery<AllMedia>(query, {
+    fetchPolicy: "cache-and-network",
+    nextFetchPolicy: "cache-first",
+    notifyOnNetworkStatusChange: true,
+  });
 
   if(loading){
     return(
