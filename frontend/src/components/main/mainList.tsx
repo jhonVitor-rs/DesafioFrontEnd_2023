@@ -25,8 +25,8 @@ export function MainList(){
       <FilterBar>
         <FilterListType/>
         <OrderList/>
-        <MediaList/>
       </FilterBar>
+      <MediaList/>
     </Container>
   )
 }

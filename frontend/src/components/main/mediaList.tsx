@@ -1,38 +1,55 @@
 'use client'
 import { styled } from "styled-components";
-import { DataResponse, GetAllMedia } from "@/hooks/getAllMedia";
 import React, { useEffect, useState } from "react";
+import { gql, useQuery } from "@apollo/client";
 import { useFilter } from "@/Context/filterContext";
+import { DataResponse, GetAllMedia } from "@/hooks/getAllMedia";
+import { AllMedia } from "@/types/media";
+import { Card } from "./card";
 
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
+  padding: 2rem;
+  gap: 2rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 `
+
+const AllMediaQuery = gql`
+  query{
+    allProducts{
+      id
+      title
+      category
+    }
+  }`
 
 export function MediaList(){
   const {state} = useFilter()
-  const [mediaData, setMediaData] = useState<DataResponse | undefined>();
+  const {data, loading, error} = useQuery<AllMedia>(AllMediaQuery)
 
-  useEffect(() => {
-    console.log("useEffect chamado");
-    const fetchData = async () => {
-      try {
-        console.log("Chamando GetAllMedia");
-        const data = await GetAllMedia();
-        console.log("Dados recebidos:", data);
-        setMediaData(data);
-      } catch (error) {
-        console.log("Erro ao buscar dados:", error);
-      }
-    };
+  if(loading){
+    return(
+      <Container>
 
-    fetchData();
-  }, [state.filterType]);
+      </Container>
+    )
+  }
 
+  if(error){
+    return(
+      <Container>
+        
+      </Container>
+    )
+  }
+  
   return(
     <Container>
-      {mediaData?.allProducts && mediaData?.allProducts.map((media) => (
-        <h3 key={media.id}>{media.title}</h3>
+      {data?.allProducts && data?.allProducts.map((media) => (
+        <Card key={media.id} id={media.id} title={media.title} category={""} />
       ))}
     </Container>
   )

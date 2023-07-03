@@ -3,6 +3,8 @@ import { MainAboutUs } from "@/components/main/mainAboutUs"
 import { MainInvite } from "@/components/main/mainInvite"
 import { MainList } from "@/components/main/mainList"
 import { styled } from "styled-components"
+import client from "@/hooks/apollo-client"
+import { ApolloProvider } from "@apollo/client"
 
 const Main = styled.div`
   display: flex;
@@ -12,10 +14,12 @@ const Main = styled.div`
 
 export default function Home() {
   return (
-    <Main>
-      <MainAboutUs/>
-      <MainList/>
-      <MainInvite/>
-    </Main>
+    <ApolloProvider client={client}>
+      <Main>
+        <MainAboutUs/>
+        <MainList/>
+        <MainInvite/>
+      </Main>
+    </ApolloProvider>
   )
 }
