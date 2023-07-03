@@ -8,10 +8,10 @@ interface Media {
 }
 
 export interface DataResponse{
-  allMedia: Media[]
+  allProducts: Media[]
 }
 
-export const GetAllMedia = async ():Promise<DataResponse | []> => {
+export async function GetAllMedia():Promise<DataResponse | undefined> {
   try{
     const {data} = await GqlClient.query({
       query: gql`
@@ -24,10 +24,9 @@ export const GetAllMedia = async ():Promise<DataResponse | []> => {
         }
       `
     })
-
     return data
   } catch(error){
     console.log(error)
-    return []
+    return undefined
   }
 }

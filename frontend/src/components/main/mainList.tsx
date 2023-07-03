@@ -1,3 +1,4 @@
+'use client'
 import { styled } from "styled-components";
 import { FilterListType } from "./filyterType";
 import { OrderList } from "./orderList";

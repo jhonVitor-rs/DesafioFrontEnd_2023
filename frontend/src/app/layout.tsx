@@ -3,6 +3,7 @@ import './globals.css'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import { Footer } from '@/components/footer'
 import { ListProvider } from '@/Context/filterContext'
+import StyledComponentsRegistry from '@/lib/registry'
 
 const jakarta = Plus_Jakarta_Sans({
   weight: ['300', '400', '500', '600', '800'],
@@ -22,11 +23,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={jakarta.className}>
-        <ListProvider>
-          <Header/>
-          {children}
-          <Footer/>
-        </ListProvider>
+        <StyledComponentsRegistry>
+          <ListProvider>
+            <Header/>
+            {children}
+            <Footer/>
+          </ListProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   )
