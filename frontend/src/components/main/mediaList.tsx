@@ -33,6 +33,35 @@ const Separator = styled.hr`
   width: 100%;
 `
 
+
+const LoadingOverlay = styled.div`
+  display: flex;
+  width: 100%;
+  height: 20rem;
+  background-color: var(--color-font-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const LoadingSpinner = styled.div`
+  border: 1rem solid var(--color-font-medium);
+  border-top: 1rem solid var(--color-font-cyan);
+  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+  animation: spin 1s linear infinite;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`
+
 const AllMediaQuery = ({filter, order, page}: {filter: FilterType, order: ListOrder, page: number}) => {
   const perPage = 9
   const sortOrder = ApplyOrder(order)
@@ -91,7 +120,9 @@ export function MediaList(){
   if(loading){
     return(
       <Container>
-
+        <LoadingOverlay>
+          <LoadingSpinner />
+        </LoadingOverlay>
       </Container>
     )
   }

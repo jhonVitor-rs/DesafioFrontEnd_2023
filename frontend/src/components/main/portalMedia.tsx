@@ -49,10 +49,23 @@ const TitleContainer = styled.div`
   font-size: 1.3rem;
   font-weight: 600;
   color: var(--color-font-bold);
+  position: relative;
 `
 const color = {
   color: "var(--color-font-selected)",
 };
+
+const Close = styled.div`
+  position: absolute;
+  top: .2rem;
+  right: .5rem;
+  color: var(--color-font-medium);
+  cursor: pointer;
+
+  &:hover{
+    color: var(--color-font-selected);
+  }
+`
 
 const Container = styled.div`
   display: flex;
@@ -102,17 +115,6 @@ const DownloadsContainer = styled.div`
   gap: 1rem;
 `
 
-const QueryMedia = (userId: string) => {
-  return gql`
-    query{
-    Product(id: ${userId}){
-      title
-      url
-      description
-    }
-  }`
-}
-
 const LoadingOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -143,6 +145,17 @@ const LoadingSpinner = styled.div`
   }
 `
 
+const QueryMedia = (userId: string) => {
+  return gql`
+    query{
+    Product(id: ${userId}){
+      title
+      url
+      description
+    }
+  }`
+}
+
 export const PortalMedia: FC<ModalProps> = ({ userId , isOpen, onClose }) => {
   const query = QueryMedia(userId)
   const { data, loading } = useQuery<MediaDetails>(query, {
@@ -172,6 +185,9 @@ export const PortalMedia: FC<ModalProps> = ({ userId , isOpen, onClose }) => {
       >
         <SeparatorTop/>
         <TitleContainer>
+          <Close onClick={onClose}>
+            <MdClose/>
+          </Close>
           <p>
             <span style={color}>Webinar: </span>{data?.Product.title}
           </p>
