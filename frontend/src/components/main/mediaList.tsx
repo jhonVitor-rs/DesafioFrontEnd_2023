@@ -1,12 +1,13 @@
 'use client'
 import { styled } from "styled-components";
-import React from "react";
+import React, { useState } from "react";
 import { gql, useQuery } from "@apollo/client";
-import { FilterType, ListActions, ListOrder, useFilter } from "@/Context/filterContext";
+import { FilterType, ListOrder, useFilter } from "@/Context/filterContext";
 import { AllMedia } from "@/types/media";
 import { Card } from "./card";
 import { ApplyFilter, ApplyOrder } from "@/hooks/applyFilterOrder";
 import { Pagination } from "./pages";
+import { PortalMedia } from "./portalMedia";
 
 const Container = styled.div`
   display: flex;
@@ -77,6 +78,16 @@ export function MediaList(){
     notifyOnNetworkStatusChange: true,
   });
 
+  const [isOpenModal, setIsModalOpen] = useState(false)
+  const [modalData, setModalData] = useState<string>('')
+  const handleOpenModal = (id: string) => {
+    setModalData(id)
+    setIsModalOpen(true)
+  }
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+  }
+
   if(loading){
     return(
       <Container>
@@ -88,9 +99,22 @@ export function MediaList(){
   console.log(data?._allProductsMeta.count)
   return(
     <Container>
+      {isOpenModal &&
+        <PortalMedia
+          userId={modalData}
+          isOpen={isOpenModal}
+          onClose={handleCloseModal}
+        />
+      }
       <div className="cards">
         {data?.allProducts && data?.allProducts.map((media) => (
-          <Card key={media.id} id={media.id} title={media.title} category={""} />
+          <Card 
+            key={media.id} 
+            id={media.id} 
+            title={media.title}
+            isOpenModal={isOpenModal}
+            modalEvent={handleOpenModal} 
+          />
         ))}
       </div>
       <Separator/>

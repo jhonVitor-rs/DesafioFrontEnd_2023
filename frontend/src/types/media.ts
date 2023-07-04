@@ -10,3 +10,11 @@ export interface AllMedia{
     count: number
   }
 }
+
+export interface MediaDetails{
+  Product: {
+    title: string
+    url: string
+    description: string
+  }
+}

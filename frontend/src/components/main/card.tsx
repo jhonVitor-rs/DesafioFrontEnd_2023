@@ -1,7 +1,6 @@
 import { styled } from "styled-components"
 import { useState } from "react"
 import { FaPlay } from "react-icons/fa6"
-import { Media } from "@/types/media"
 
 const Container = styled.div`
   display: flex;
@@ -24,7 +23,6 @@ const ImageContainer = styled.div<{isHovered: boolean}>`
   transition: all .3s;
 
   &::before {
-    z-index: 998;
     content: "";
     border-radius: 1rem 1rem 0 0;
     position: absolute;
@@ -38,7 +36,6 @@ const ImageContainer = styled.div<{isHovered: boolean}>`
   }
 
   .play-icon {
-    z-index: 999;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -65,22 +62,36 @@ const Title = styled.div`
   
 `
 
-export function Card({id, title}: Media){
+interface CardProps{
+  id: string
+  title: string
+  isOpenModal: boolean
+  modalEvent: (id: string) => void
+}
+
+export function Card({id, title, isOpenModal, modalEvent}: CardProps){
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
-    setIsHovered(true);
+    if(!isOpenModal)
+      setIsHovered(true);
   };
 
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
 
+  const handleModal = () => {
+    if(!isOpenModal)
+      modalEvent(id)
+    setIsHovered(false)
+  }
 
   return(
     <Container 
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}  
+      onClick={handleModal}
     >
       <ImageContainer 
         isHovered={isHovered}  
