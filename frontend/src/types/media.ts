@@ -6,4 +6,7 @@ export interface Media {
 
 export interface AllMedia{
   allProducts: Media[]
+  _allProductsMeta: {
+    count: number
+  }
 }

@@ -39,6 +39,10 @@ export function FilterListType() {
   const handleFilter = (value: FilterType) => {
     const payload = state.filterType === value ? FilterType.All : value
     dispatch({
+      type: ListActions.SetPage,
+      payload: 0
+    })
+    dispatch({
       type: ListActions.SetFilterType,
       payload: payload
     })

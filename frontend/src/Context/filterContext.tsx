@@ -19,7 +19,7 @@ export enum ListOrder {
 export enum ListActions {
   SetFilterType,
   SetListOrder,
-  SetPage
+  SetPage,
 }
 
 type State = {
@@ -42,7 +42,7 @@ type ListProviderProps = {
 const initialState: State = {
   filterType: FilterType.All,
   listOrder: ListOrder.Default,
-  page: 1
+  page: 0,
 }
 
 const ListContext = createContext<ContextType | undefined>(undefined)
@@ -55,6 +55,8 @@ const listReducer = (state: State, action: Action) => {
       return{...state, listOrder: action.payload}
     case ListActions.SetPage:
       return {...state, page: action.payload}
+    default:
+      return state
   }
 }
 
