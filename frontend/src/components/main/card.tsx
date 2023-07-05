@@ -11,6 +11,11 @@ const Container = styled.div`
   height: 15rem;
   padding: 0;
   cursor: pointer;
+
+  @media (max-width: 375px) {
+    width: 15rem;
+    height: 12rem;
+  }
 `
 
 const ImageContainer = styled.div<{isHovered: boolean}>`
@@ -48,6 +53,11 @@ const ImageContainer = styled.div<{isHovered: boolean}>`
     width: 5rem;
     height: 5rem;
     border-radius: 50%;
+  }
+
+  @media (max-width: 375px) {
+    width: 15rem;
+    height: 10rem;
   }
 `
 

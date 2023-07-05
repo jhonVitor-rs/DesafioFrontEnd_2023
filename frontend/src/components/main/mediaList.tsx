@@ -23,6 +23,11 @@ const Container = styled.div`
     width: 100%;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 375px) {
+      padding: 0;
+      gap: 1rem;
+    }
   }
 `
 
@@ -32,7 +37,6 @@ const Separator = styled.hr`
   height: 1px;
   width: 100%;
 `
-
 
 const LoadingOverlay = styled.div`
   display: flex;

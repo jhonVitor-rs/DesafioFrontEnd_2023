@@ -13,6 +13,7 @@ const Container = styled.div`
 
 const FilterBar = styled.div`
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   align-items: center;
   justify-content: space-between;

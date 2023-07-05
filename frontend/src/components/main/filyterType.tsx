@@ -8,6 +8,7 @@ interface FilterItemProps {
 
 const FilterList = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: .8rem;

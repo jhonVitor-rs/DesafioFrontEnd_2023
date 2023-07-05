@@ -21,8 +21,8 @@ const customStyles = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "33rem",
-    height: "34rem",
+    width: "45%",
+    height: "85%",
     overflow: "auto",
     outline: "none",
     border: "none",
@@ -113,6 +113,10 @@ const DownloadsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  @media(max-width: 780px){
+    display: none;
+  }
 `
 
 const LoadingOverlay = styled.div`
@@ -178,7 +182,7 @@ export const PortalMedia: FC<ModalProps> = ({ userId , isOpen, onClose }) => {
 
   return (
     <>
-      <Modal
+      <Modal 
         isOpen={isOpen}
         onRequestClose={onClose}
         style={customStyles}

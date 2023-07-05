@@ -7,6 +7,10 @@ const Container = styled.div`
   gap: 1rem;
   align-items: center;
   padding: 5rem;
+
+  @media(max-width: 375px){
+    padding: 1rem;
+  }
 `
 
 const HeaderTitle = styled.div`
@@ -29,6 +33,9 @@ const FirstMotto = styled.h3`
   font-weight: 400;
   font-size: 3.5rem;
 
+  @media(max-width: 425px){
+    font-size: 2rem;
+  }
 `
 
 const SecondMotto = styled.h2`
@@ -36,6 +43,10 @@ const SecondMotto = styled.h2`
   font-weight: 600;
   font-size: 7rem;
   position: relative;
+
+  @media(max-width: 425px){
+    font-size: 3rem;
+  }
 `
 
 const Asset = styled.img`

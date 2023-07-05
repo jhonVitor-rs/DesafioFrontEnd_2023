@@ -5,6 +5,7 @@ import { ListOrder, useFilter, ListActions } from "@/Context/filterContext";
 
 const Container = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: .8rem;
@@ -64,7 +65,7 @@ const ListOptions = styled.ul`
 export function OrderList(){
   const [isOpen, setIsOpen] = useState(false)
   const [order, setOrder] = useState('')
-  const {state, dispatch} = useFilter()
+  const {dispatch} = useFilter()
 
   const options = [
     {title: 'Mais recentes', order: ListOrder.DateDesc},

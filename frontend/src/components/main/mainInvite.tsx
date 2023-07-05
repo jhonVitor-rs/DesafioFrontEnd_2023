@@ -21,7 +21,8 @@ const Corporative = styled.div`
 
 const Image = styled.img`
   height: auto;
-  width: 35rem;
+  width: 100%;
+  max-width: 550px;
 `
 
 export function MainInvite(){
