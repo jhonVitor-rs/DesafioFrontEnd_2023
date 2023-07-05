@@ -17,21 +17,29 @@ const customStyles = {
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
-  content: {
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "45%",
-    height: "85%",
-    overflow: "auto",
-    outline: "none",
-    border: "none",
-    borderRadius: "1rem",
-    boxShadow: "0 2px 10px rgba(0, 0, 0, 0.15)",
-    padding: "0",
-    background: "white",
-  },
 }
+
+const MyModal = styled(Modal)`
+  position: absolute;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45%;
+  height: 85%;
+  border: none;
+  border-top: .3rem solid var(--color-font-selected);
+  border-radius: 1rem;
+  box-sizing: border-box;
+  overflow: auto;
+
+  @media(max-width: 780px){
+    width: 80%;
+    height: 90%;
+  }
+
+
+`
 
 const SeparatorTop = styled.hr`
   background-color: var(--color-font-selected);
@@ -83,6 +91,7 @@ const Separator = styled.hr`
 
 const DownloadsOptions = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 `
 
@@ -182,12 +191,11 @@ export const PortalMedia: FC<ModalProps> = ({ userId , isOpen, onClose }) => {
 
   return (
     <>
-      <Modal 
+      <MyModal
         isOpen={isOpen}
         onRequestClose={onClose}
         style={customStyles}
       >
-        <SeparatorTop/>
         <TitleContainer>
           <Close onClick={onClose}>
             <MdClose/>
@@ -223,7 +231,7 @@ export const PortalMedia: FC<ModalProps> = ({ userId , isOpen, onClose }) => {
             </Option>
           </DownloadsOptions>
         </Container>
-      </Modal>
+      </MyModal>
       <DownloadsContainer>
         <Option color="#03af81">
           <span><MdCloudDownload/></span>Spreadsheet.xls
