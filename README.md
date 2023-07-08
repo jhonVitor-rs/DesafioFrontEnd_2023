@@ -22,22 +22,19 @@ Este projeto foi desenvolvido como resolução do desafio para a vaga de Desenvo
 
 ## Executando o Projeto
 
+O projeto foi reconfigurado para rodar com um servidor interno com graphql-yoga a pasta backend ja nao e necessaria mais;
 Para executar o projeto localmente, siga as instruções abaixo:
 Clone o repositorio do github;
 
-1. Abra um terminal e navegue até a pasta do backend, e instale as dependencias:
-   cd /backend
-   npm install
-2. Inicie o servidor GraphQL executando o seguinte comando:
-   npm start
-3. Abra um segundo terminal (sem fechar o primeiro) e navegue até a pasta do frontend, e instale as depedências:
+1. Abra um segundo terminal (sem fechar o primeiro) e navegue até a pasta do frontend, e instale as depedências:
    cd /frontend
    npm install
-4. Inicie o servidor de desenvolvimento Next.js com o comando:
+2. Inicie o servidor de desenvolvimento Next.js com o comando:
    npm run dev
-5. Acesse a aplicação no navegador através do endereço: `http://localhost:3000`
+3. Acesse a aplicação no navegador através do endereço: `http://localhost:3000`
 
 Observação: Certifique-se de ter o Node.js e o NPM instalados em seu ambiente de desenvolvimento.
+Voce pode observar o projeto rodando através da url: https://desafio-front-end-2023.vercel.app/
 
 ## Notas
 
