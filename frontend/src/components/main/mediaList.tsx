@@ -67,33 +67,19 @@ const LoadingSpinner = styled.div`
 `
 
 const AllMediaQuery = ({filter, order, page}: {filter: FilterType, order: ListOrder, page: number}) => {
-  const perPage = 9
   const sortOrder = ApplyOrder(order)
-
-  if(filter === FilterType.All){
-    return gql`
-      query {
-        allProducts(page: ${page}, perPage: ${perPage}, ${sortOrder}){
+  const sortFilter = ApplyFilter(filter)
+  return gql`
+    query {
+      allMedia(page: ${page}, perPage: 9, ${sortFilter}, ${sortOrder}){
+        edges{
           id
           title
           category
-        }_allProductsMeta{
-          count
         }
-      }`
-  }else{
-    const sortFilter = ApplyFilter(filter)
-    return gql`
-      query {
-        allProducts(page: ${page}, perPage: ${perPage}, ${sortFilter}, ${sortOrder}){
-          id
-          title
-          category
-        }_allProductsMeta(${sortFilter}){
-          count
-        }
-      }`
-  }
+        totalCount
+      }
+    }`
 }
 
 export function MediaList(){
@@ -131,7 +117,6 @@ export function MediaList(){
     )
   }
   
-  console.log(data?._allProductsMeta.count)
   return(
     <Container>
       {isOpenModal &&
@@ -142,7 +127,7 @@ export function MediaList(){
         />
       }
       <div className="cards">
-        {data?.allProducts && data?.allProducts.map((media) => (
+        {data?.allMedia.edges && data?.allMedia.edges.map((media) => (
           <Card 
             key={media.id} 
             id={media.id} 
@@ -153,7 +138,7 @@ export function MediaList(){
         ))}
       </div>
       <Separator/>
-      <Pagination totalItems={data?._allProductsMeta.count}/>
+      <Pagination totalItems={data?.allMedia.totalCount}/>
     </Container>
   )
 }

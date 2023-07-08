@@ -5,14 +5,14 @@ export interface Media {
 }
 
 export interface AllMedia{
-  allProducts: Media[]
-  _allProductsMeta: {
-    count: number
+  allMedia:{
+    edges: Media[]
+    totalCount: number
   }
 }
 
 export interface MediaDetails{
-  Product: {
+  media: {
     title: string
     url: string
     description: string

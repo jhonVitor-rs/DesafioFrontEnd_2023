@@ -161,7 +161,7 @@ const LoadingSpinner = styled.div`
 const QueryMedia = (userId: string) => {
   return gql`
     query{
-    Product(id: ${userId}){
+    media(id: ${userId}){
       title
       url
       description
@@ -201,20 +201,20 @@ export const PortalMedia: FC<ModalProps> = ({ userId , isOpen, onClose }) => {
             <MdClose/>
           </Close>
           <p>
-            <span style={color}>Webinar: </span>{data?.Product.title}
+            <span style={color}>Webinar: </span>{data?.media.title}
           </p>
         </TitleContainer>
         <div>
           <iframe
             width="100%"
             height="auto"
-            src={data?.Product.url}
+            src={data?.media.url}
             allowFullScreen
           ></iframe>
         </div>
         <Container>
           <h3>Descrição</h3>
-          <p>{data?.Product.description}</p>
+          <p>{data?.media.description}</p>
         </Container>
         <Container>
           <h3>Downloads</h3>
