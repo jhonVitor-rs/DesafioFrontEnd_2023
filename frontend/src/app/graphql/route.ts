@@ -17,9 +17,3 @@ const {handleRequest} = createYoga({
 })
 
 export {handleRequest as GET, handleRequest as POST}
-
-segment export config = {
-  api: {
-    bodyParser: false
-  }
-}
