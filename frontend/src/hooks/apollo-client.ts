@@ -1,7 +1,7 @@
 import { InMemoryCache, ApolloClient } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: process.env.NEXT_PUBLIC_GQL_URL,
+  uri: `https://desafio-front-end-2023.vercel.app/graphql`,
   cache: new InMemoryCache
 })
 
